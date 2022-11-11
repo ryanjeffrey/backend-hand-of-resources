@@ -94,6 +94,11 @@ describe('albums routes', () => {
     expect(resp.body.title).toBe('Ventriloquism');
   });
 
+  it('GET /albums/xyz should return a 404 error', async () => {
+    const resp = await request(app).get('/albums/6541');
+    expect(resp.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
