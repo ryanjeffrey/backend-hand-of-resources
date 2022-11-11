@@ -1,6 +1,7 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS basquiat_paintings;
+DROP TABLE IF EXISTS albums;
 
 CREATE TABLE basquiat_paintings (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -8,6 +9,14 @@ CREATE TABLE basquiat_paintings (
   year SMALLINT NOT NULL,
   dimensions VARCHAR NOT NULL,
   image VARCHAR NOT NULL
+);
+
+CREATE TABLE albums (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  artist VARCHAR NOT NULL,
+  title VARCHAR NOT NULL,
+  year SMALLINT NOT NULL,
+  spotify_link VARCHAR NOT NULL
 );
 
 INSERT INTO
@@ -42,4 +51,38 @@ VALUES
     1983,
     '57 x 76.5 cm',
     'https://uploads5.wikiart.org/images/jean-michel-basquiat/king-alphonso.jpg!Large.jpg'
+  );
+
+INSERT INTO
+  albums (artist, title, year, spotify_link)
+VALUES
+  (
+    '9th Wonder',
+    'ZION VII',
+    2022,
+    'https://open.spotify.com/album/4KKqugfLVZaDA62xZPJnEz?si=mSOaIzrSTTSfa-fjHP-tpg'
+  ),
+  (
+    'Björk',
+    'Fossora',
+    2022,
+    'https://open.spotify.com/album/5NchVUjB8yqNhqSeBYaFVy?si=Req9nVdtQ8a20CgK0_7uzQ'
+  ),
+  (
+    'Freddie Gibbs',
+    '$oul $old $eparately',
+    2022,
+    'https://open.spotify.com/album/3PZx4Vntcp5T7UgdfjnFDa?si=eeTJJflLSl-R7_1A1FMzFg'
+  ),
+  (
+    'Meshell Ndegeocello',
+    'The World Has Made Me The Man Of My Dreams',
+    2007,
+    'https://open.spotify.com/album/2AaWyePc8ZelBtReUpDZXw?si=W-27VnpJSNatVqllqG9v_A'
+  ),
+  (
+    'Erykah Badu',
+    'Mama''s Gun',
+    2000,
+    'https://open.spotify.com/album/3cADvHRdKniF9ELCn1zbGH?si=NmgCoAHeQT2GNAX985xD-g'
   );
