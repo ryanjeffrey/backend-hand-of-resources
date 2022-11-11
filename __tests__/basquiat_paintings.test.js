@@ -94,6 +94,11 @@ describe('basquiat-paintings routes', () => {
     expect(resp.body.year).toBe(1979);
   });
 
+  it('GET /basquiat-paintings/xyz should return a 404 error', async () => {
+    const resp = await request(app).get('/basquiat-paintings/789');
+    expect(resp.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
