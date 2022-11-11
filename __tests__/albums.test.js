@@ -86,6 +86,14 @@ describe('albums routes', () => {
     `);
   });
 
+  it('PUT /albums/4 should update Basquiat painting with id #4', async () => {
+    const resp = await request(app)
+      .put('/albums/4')
+      .send({ title: 'Ventriloquism' });
+    expect(resp.status).toBe(200);
+    expect(resp.body.title).toBe('Ventriloquism');
+  });
+
   afterAll(() => {
     pool.end();
   });
