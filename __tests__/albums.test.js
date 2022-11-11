@@ -86,7 +86,7 @@ describe('albums routes', () => {
     `);
   });
 
-  it('PUT /albums/4 should update Basquiat painting with id #4', async () => {
+  it('PUT /albums/4 should update album with id #4', async () => {
     const resp = await request(app)
       .put('/albums/4')
       .send({ title: 'Ventriloquism' });
@@ -97,6 +97,14 @@ describe('albums routes', () => {
   it('GET /albums/xyz should return a 404 error', async () => {
     const resp = await request(app).get('/albums/6541');
     expect(resp.status).toBe(404);
+  });
+
+  it('DELETE /albums/2 should delete album #2', async () => {
+    const resp = await request(app).delete('/albums/2');
+    expect(resp.status).toBe(204);
+
+    const getResp = await request(app).get('/albums/2');
+    expect(getResp.status).toBe(404);
   });
 
   afterAll(() => {
