@@ -88,6 +88,12 @@ describe('basquiat-paintings routes', () => {
     `);
   });
 
+  it('PUT /basquiat-paintings/1 should update Basquiat painting with id #1', async () => {
+    const resp = await request(app).put('/basquiat-paintings/1').send({ year: 1979 });
+    expect(resp.status).toBe(200);
+    expect(resp.body.year).toBe(1979);
+  });
+
   afterAll(() => {
     pool.end();
   });
