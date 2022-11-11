@@ -65,6 +65,29 @@ describe('basquiat-paintings routes', () => {
     });
   });
 
+  it('POST /basquiat-paintings should create a new Basquiat painting in the database', async () => {
+    const newBasquiatPainting = {
+      title: 'Boxer',
+      year: 1982,
+      dimensions: '193 x 239 cm',
+      image:
+        'https://uploads6.wikiart.org/images/jean-michel-basquiat/boxer.jpg!Large.jpg',
+    };
+    const resp = await request(app)
+      .post('/basquiat-paintings')
+      .send(newBasquiatPainting);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "dimensions": "193 x 239 cm",
+        "id": "6",
+        "image": "https://uploads6.wikiart.org/images/jean-michel-basquiat/boxer.jpg!Large.jpg",
+        "title": "Boxer",
+        "year": 1982,
+      }
+    `);
+  });
+
   afterAll(() => {
     pool.end();
   });
