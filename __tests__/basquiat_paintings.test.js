@@ -52,6 +52,19 @@ describe('basquiat-paintings routes', () => {
     `);
   });
 
+  it('GET /basquiat-paintings/1 should return painting details', async () => {
+    const resp = await request(app).get('/basquiat-paintings/1');
+    expect(resp.status).toEqual(200);
+    expect(resp.body).toEqual({
+      id: '1',
+      title: 'Riding with Death',
+      year: 1988,
+      dimensions: '249 x 289.5 cm',
+      image:
+        'https://blog.singulart.com/wp-content/uploads/2020/02/riding-with-death.jpg',
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
