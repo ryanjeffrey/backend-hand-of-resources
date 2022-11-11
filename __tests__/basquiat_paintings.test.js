@@ -99,6 +99,14 @@ describe('basquiat-paintings routes', () => {
     expect(resp.status).toBe(404);
   });
 
+  it('DELETE /basquiat-paintings/3 should delete Basquiat painting #3', async () => {
+    const resp = await request(app).delete('/basquiat-paintings/3');
+    expect(resp.status).toBe(204);
+
+    const getResp = await request(app).get('/basquiat-paintings/3');
+    expect(getResp.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
