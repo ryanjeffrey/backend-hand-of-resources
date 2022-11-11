@@ -65,6 +65,27 @@ describe('albums routes', () => {
     });
   });
 
+  it('POST /albums should create a new album in the database', async () => {
+    const newAlbum = {
+      artist: 'Oumou Sangaré',
+      title: 'Seya',
+      year: 2009,
+      spotify_link:
+        'https://open.spotify.com/album/1nEaABF2RBrAzbX0akAyk6?si=TOSV-qerRuOwlsT1goJkIQ',
+    };
+    const resp = await request(app).post('/albums').send(newAlbum);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "artist": "Oumou Sangaré",
+        "id": "6",
+        "spotify_link": "https://open.spotify.com/album/1nEaABF2RBrAzbX0akAyk6?si=TOSV-qerRuOwlsT1goJkIQ",
+        "title": "Seya",
+        "year": 2009,
+      }
+    `);
+  });
+
   afterAll(() => {
     pool.end();
   });
