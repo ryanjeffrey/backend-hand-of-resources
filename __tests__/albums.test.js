@@ -52,6 +52,19 @@ describe('albums routes', () => {
     `);
   });
 
+  it('GET /albums/3 should return album details', async () => {
+    const resp = await request(app).get('/albums/3');
+    expect(resp.status).toEqual(200);
+    expect(resp.body).toEqual({
+      id: '3',
+      artist: 'Freddie Gibbs',
+      title: '$oul $old $eparately',
+      year: 2022,
+      spotify_link:
+        'https://open.spotify.com/album/3PZx4Vntcp5T7UgdfjnFDa?si=eeTJJflLSl-R7_1A1FMzFg',
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
