@@ -51,6 +51,18 @@ describe('chicago-bears routes', () => {
       ]
     `);
   });
+  
+  it('GET /chicago-bears/4 should return player details', async () => {
+    const resp = await request(app).get('/chicago-bears/4');
+    expect(resp.status).toEqual(200);
+    expect(resp.body).toEqual({
+      id: '4',
+      name: 'Jaquan Brisker',
+      number: 9,
+      position: 'S',
+      experience: 1
+    });
+  });
 
   afterAll(() => {
     pool.end();
