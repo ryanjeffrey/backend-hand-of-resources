@@ -2,6 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS basquiat_paintings;
 DROP TABLE IF EXISTS albums;
+DROP TABLE IF EXISTS chicago_bears;
 
 CREATE TABLE basquiat_paintings (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -17,6 +18,14 @@ CREATE TABLE albums (
   title VARCHAR NOT NULL,
   year SMALLINT NOT NULL,
   spotify_link VARCHAR NOT NULL
+);
+
+CREATE TABLE chicago_bears (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  number SMALLINT NOT NULL,
+  position VARCHAR NOT NULL,
+  experience SMALLINT NOT NULL
 );
 
 INSERT INTO
@@ -85,4 +94,38 @@ VALUES
     'Mama''s Gun',
     2000,
     'https://open.spotify.com/album/3cADvHRdKniF9ELCn1zbGH?si=NmgCoAHeQT2GNAX985xD-g'
+  );
+
+INSERT INTO
+  chicago_bears (name, number, position, experience)
+VALUES
+  (
+    'Justin Fields',
+    1,
+    'QB',
+    2
+  ),
+  (
+    'Chase Claypool',
+    10,
+    'WR',
+    3
+  ),
+  (
+    'Darnell Mooney',
+    11,
+    'WR',
+    3
+  ),
+  (
+    'Jaquan Brisker',
+    9,
+    'S',
+    1
+  ),
+  (
+    'Eddie Jackson',
+    4,
+    'S',
+    6
   );
