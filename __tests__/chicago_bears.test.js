@@ -51,7 +51,7 @@ describe('chicago-bears routes', () => {
       ]
     `);
   });
-  
+
   it('GET /chicago-bears/4 should return player details', async () => {
     const resp = await request(app).get('/chicago-bears/4');
     expect(resp.status).toEqual(200);
@@ -60,8 +60,28 @@ describe('chicago-bears routes', () => {
       name: 'Jaquan Brisker',
       number: 9,
       position: 'S',
-      experience: 1
+      experience: 1,
     });
+  });
+
+  it('POST /chicago-bears should create a new player in the database', async () => {
+    const newPlayer = {
+      name: 'Jaylon Johnson',
+      number: 33,
+      position: 'CB',
+      experience: 3,
+    };
+    const resp = await request(app).post('/chicago-bears').send(newPlayer);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "experience": 3,
+        "id": "6",
+        "name": "Jaylon Johnson",
+        "number": 33,
+        "position": "CB",
+      }
+    `);
   });
 
   afterAll(() => {
