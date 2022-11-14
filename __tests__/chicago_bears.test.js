@@ -84,6 +84,14 @@ describe('chicago-bears routes', () => {
     `);
   });
 
+  it('PUT /chicago-bears/2 should update player with id #2', async () => {
+    const resp = await request(app)
+      .put('/chicago-bears/2')
+      .send({ position: 'TE' });
+    expect(resp.status).toBe(200);
+    expect(resp.body.position).toBe('TE');
+  });
+
   afterAll(() => {
     pool.end();
   });
