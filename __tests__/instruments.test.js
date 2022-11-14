@@ -54,8 +54,26 @@ describe('instruments routes', () => {
       id: '5',
       name: 'Kalimba',
       family: 'Idiophone',
-      isElectronic: false
+      isElectronic: false,
     });
+  });
+
+  it('POST /instruments should create a new instrument in the database', async () => {
+    const newInstrument = {
+      name: 'MPC',
+      family: 'Electronic Percussion',
+      isElectronic: true,
+    };
+    const resp = await request(app).post('/instruments').send(newInstrument);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "family": "Electronic Percussion",
+        "id": "6",
+        "isElectronic": true,
+        "name": "MPC",
+      }
+    `);
   });
 
   afterAll(() => {
