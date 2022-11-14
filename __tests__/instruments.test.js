@@ -89,6 +89,14 @@ describe('instruments routes', () => {
     expect(resp.status).toBe(404);
   });
 
+  it('DELETE /instruments/3 should delete instrument #3', async () => {
+    const resp = await request(app).delete('/instruments/3');
+    expect(resp.status).toBe(204);
+
+    const getResp = await request(app).get('/instruments/3');
+    expect(getResp.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
