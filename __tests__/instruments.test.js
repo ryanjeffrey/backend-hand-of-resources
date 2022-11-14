@@ -76,6 +76,14 @@ describe('instruments routes', () => {
     `);
   });
 
+  it('PUT /instruments/2 should update instrument with id #2', async () => {
+    const resp = await request(app)
+      .put('/instruments/2')
+      .send({ family: 'Percussion' });
+    expect(resp.status).toBe(200);
+    expect(resp.body.family).toBe('Percussion');
+  });
+
   afterAll(() => {
     pool.end();
   });
