@@ -87,6 +87,14 @@ describe('cars routes', () => {
     expect(resp.status).toBe(404);
   });
 
+  it('DELETE /cars/4 should delete car #4', async () => {
+    const resp = await request(app).delete('/cars/4');
+    expect(resp.status).toBe(204);
+
+    const getResp = await request(app).get('/cars/4');
+    expect(getResp.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
