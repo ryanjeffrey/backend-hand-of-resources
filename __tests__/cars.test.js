@@ -77,11 +77,14 @@ describe('cars routes', () => {
   });
 
   it('PUT /cars/1 should update car with id #1', async () => {
-    const resp = await request(app)
-      .put('/cars/1')
-      .send({ model: 'Cayenne' });
+    const resp = await request(app).put('/cars/1').send({ model: 'Cayenne' });
     expect(resp.status).toBe(200);
     expect(resp.body.model).toBe('Cayenne');
+  });
+
+  it('GET /cars/xyz should return a 404 error', async () => {
+    const resp = await request(app).get('/cars/96311');
+    expect(resp.status).toBe(404);
   });
 
   afterAll(() => {
