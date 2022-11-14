@@ -84,6 +84,11 @@ describe('instruments routes', () => {
     expect(resp.body.family).toBe('Percussion');
   });
 
+  it('GET /instruments/xyz should return a 404 error', async () => {
+    const resp = await request(app).get('/instruments/9');
+    expect(resp.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
