@@ -92,6 +92,11 @@ describe('chicago-bears routes', () => {
     expect(resp.body.position).toBe('TE');
   });
 
+  it('GET /chicago-bears/xyz should return a 404 error', async () => {
+    const resp = await request(app).get('/chicago-bears/4122');
+    expect(resp.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
