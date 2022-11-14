@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS basquiat_paintings;
 DROP TABLE IF EXISTS albums;
 DROP TABLE IF EXISTS chicago_bears;
 DROP TABLE IF EXISTS instruments;
+DROP TABLE IF EXISTS cars;
 
 CREATE TABLE basquiat_paintings (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -34,6 +35,13 @@ CREATE TABLE instruments (
   name VARCHAR NOT NULL,
   family VARCHAR NOT NULL,
   is_electronic BOOLEAN NOT NULL
+);
+
+CREATE TABLE cars (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  make VARCHAR NOT NULL,
+  model VARCHAR NOT NULL,
+  fuel_type VARCHAR NOT NULL
 );
 
 INSERT INTO
@@ -165,4 +173,33 @@ VALUES
     'Kalimba',
     'Idiophone',
     FALSE
+  );
+
+INSERT INTO
+  cars (make, model, fuel_type)
+VALUES
+  (
+    'Porsche',
+    'Macan',
+    'gas'
+  ),
+  (
+    'Rivian',
+    'R1S',
+    'electric'
+  ),
+  (
+    'Volkswagen',
+    'Tiguan',
+    'gas'
+  ),
+  (
+    'Toyota',
+    'Rav4 Hybrid',
+    'hybrid'
+  ),
+  (
+    'Mercedes-Benz',
+    'E350 BlueTEC',
+    'diesel'
   );
