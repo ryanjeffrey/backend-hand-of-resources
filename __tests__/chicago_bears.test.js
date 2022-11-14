@@ -97,6 +97,14 @@ describe('chicago-bears routes', () => {
     expect(resp.status).toBe(404);
   });
 
+  it('DELETE /chicago-bears/5 should delete player #5', async () => {
+    const resp = await request(app).delete('/chicago-bears/5');
+    expect(resp.status).toBe(204);
+
+    const getResp = await request(app).get('/chicago-bears/5');
+    expect(getResp.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
