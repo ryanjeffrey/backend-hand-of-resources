@@ -16,35 +16,35 @@ describe('albums routes', () => {
         Object {
           "artist": "9th Wonder",
           "id": "1",
-          "spotify_link": "https://open.spotify.com/album/4KKqugfLVZaDA62xZPJnEz?si=mSOaIzrSTTSfa-fjHP-tpg",
+          "spotifyLink": "https://open.spotify.com/album/4KKqugfLVZaDA62xZPJnEz?si=mSOaIzrSTTSfa-fjHP-tpg",
           "title": "ZION VII",
           "year": 2022,
         },
         Object {
           "artist": "Björk",
           "id": "2",
-          "spotify_link": "https://open.spotify.com/album/5NchVUjB8yqNhqSeBYaFVy?si=Req9nVdtQ8a20CgK0_7uzQ",
+          "spotifyLink": "https://open.spotify.com/album/5NchVUjB8yqNhqSeBYaFVy?si=Req9nVdtQ8a20CgK0_7uzQ",
           "title": "Fossora",
           "year": 2022,
         },
         Object {
           "artist": "Freddie Gibbs",
           "id": "3",
-          "spotify_link": "https://open.spotify.com/album/3PZx4Vntcp5T7UgdfjnFDa?si=eeTJJflLSl-R7_1A1FMzFg",
+          "spotifyLink": "https://open.spotify.com/album/3PZx4Vntcp5T7UgdfjnFDa?si=eeTJJflLSl-R7_1A1FMzFg",
           "title": "$oul $old $eparately",
           "year": 2022,
         },
         Object {
           "artist": "Meshell Ndegeocello",
           "id": "4",
-          "spotify_link": "https://open.spotify.com/album/2AaWyePc8ZelBtReUpDZXw?si=W-27VnpJSNatVqllqG9v_A",
+          "spotifyLink": "https://open.spotify.com/album/2AaWyePc8ZelBtReUpDZXw?si=W-27VnpJSNatVqllqG9v_A",
           "title": "The World Has Made Me The Man Of My Dreams",
           "year": 2007,
         },
         Object {
           "artist": "Erykah Badu",
           "id": "5",
-          "spotify_link": "https://open.spotify.com/album/3cADvHRdKniF9ELCn1zbGH?si=NmgCoAHeQT2GNAX985xD-g",
+          "spotifyLink": "https://open.spotify.com/album/3cADvHRdKniF9ELCn1zbGH?si=NmgCoAHeQT2GNAX985xD-g",
           "title": "Mama's Gun",
           "year": 2000,
         },
@@ -60,7 +60,7 @@ describe('albums routes', () => {
       artist: 'Freddie Gibbs',
       title: '$oul $old $eparately',
       year: 2022,
-      spotify_link:
+      spotifyLink:
         'https://open.spotify.com/album/3PZx4Vntcp5T7UgdfjnFDa?si=eeTJJflLSl-R7_1A1FMzFg',
     });
   });
@@ -70,7 +70,7 @@ describe('albums routes', () => {
       artist: 'Oumou Sangaré',
       title: 'Seya',
       year: 2009,
-      spotify_link:
+      spotifyLink:
         'https://open.spotify.com/album/1nEaABF2RBrAzbX0akAyk6?si=TOSV-qerRuOwlsT1goJkIQ',
     };
     const resp = await request(app).post('/albums').send(newAlbum);
@@ -79,7 +79,7 @@ describe('albums routes', () => {
       Object {
         "artist": "Oumou Sangaré",
         "id": "6",
-        "spotify_link": "https://open.spotify.com/album/1nEaABF2RBrAzbX0akAyk6?si=TOSV-qerRuOwlsT1goJkIQ",
+        "spotifyLink": "https://open.spotify.com/album/1nEaABF2RBrAzbX0akAyk6?si=TOSV-qerRuOwlsT1goJkIQ",
         "title": "Seya",
         "year": 2009,
       }
