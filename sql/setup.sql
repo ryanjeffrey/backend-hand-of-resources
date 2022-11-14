@@ -3,6 +3,7 @@
 DROP TABLE IF EXISTS basquiat_paintings;
 DROP TABLE IF EXISTS albums;
 DROP TABLE IF EXISTS chicago_bears;
+DROP TABLE IF EXISTS instruments;
 
 CREATE TABLE basquiat_paintings (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -26,6 +27,13 @@ CREATE TABLE chicago_bears (
   number SMALLINT NOT NULL,
   position VARCHAR NOT NULL,
   experience SMALLINT NOT NULL
+);
+
+CREATE TABLE instruments (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  family VARCHAR NOT NULL,
+  is_electronic BOOLEAN NOT NULL
 );
 
 INSERT INTO
@@ -128,4 +136,33 @@ VALUES
     4,
     'S',
     6
+  );
+
+INSERT INTO
+  instruments (name, family, is_electronic)
+VALUES
+  (
+    'Guitar',
+    'String',
+    FALSE
+  ),
+  (
+    'Drum Set',
+    'Membrane',
+    FALSE
+  ),
+  (
+    'Synthesizer',
+    'Keyboard',
+    TRUE
+  ),
+  (
+    'Hammond B3 Organ',
+    'Keyboard',
+    FALSE
+  ),
+  (
+    'Kalimba',
+    'Idiophone',
+    FALSE
   );
