@@ -47,6 +47,17 @@ describe('instruments routes', () => {
     `);
   });
 
+  it('GET /instruments/5 should return instrument details', async () => {
+    const resp = await request(app).get('/instruments/5');
+    expect(resp.status).toEqual(200);
+    expect(resp.body).toEqual({
+      id: '5',
+      name: 'Kalimba',
+      family: 'Idiophone',
+      isElectronic: false
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
