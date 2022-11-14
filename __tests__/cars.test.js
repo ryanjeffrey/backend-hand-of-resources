@@ -46,6 +46,17 @@ describe('cars routes', () => {
       ]
     `);
   });
+  
+  it('GET /cars/2 should return car details', async () => {
+    const resp = await request(app).get('/cars/2');
+    expect(resp.status).toEqual(200);
+    expect(resp.body).toEqual({
+      id: '2',
+      make: 'Rivian',
+      model: 'R1S',
+      fuelType: 'electric'
+    });
+  });
 
   afterAll(() => {
     pool.end();
