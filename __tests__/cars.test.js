@@ -46,7 +46,7 @@ describe('cars routes', () => {
       ]
     `);
   });
-  
+
   it('GET /cars/2 should return car details', async () => {
     const resp = await request(app).get('/cars/2');
     expect(resp.status).toEqual(200);
@@ -54,8 +54,26 @@ describe('cars routes', () => {
       id: '2',
       make: 'Rivian',
       model: 'R1S',
-      fuelType: 'electric'
+      fuelType: 'electric',
     });
+  });
+
+  it('POST /cars should create a new car in the database', async () => {
+    const newCar = {
+      make: 'Hyundai',
+      model: 'Tucson Hybrid',
+      fuelType: 'hybrid',
+    };
+    const resp = await request(app).post('/cars').send(newCar);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "fuelType": "hybrid",
+        "id": "6",
+        "make": "Hyundai",
+        "model": "Tucson Hybrid",
+      }
+    `);
   });
 
   afterAll(() => {
