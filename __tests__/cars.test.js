@@ -76,6 +76,14 @@ describe('cars routes', () => {
     `);
   });
 
+  it('PUT /cars/1 should update car with id #1', async () => {
+    const resp = await request(app)
+      .put('/cars/1')
+      .send({ model: 'Cayenne' });
+    expect(resp.status).toBe(200);
+    expect(resp.body.model).toBe('Cayenne');
+  });
+
   afterAll(() => {
     pool.end();
   });
